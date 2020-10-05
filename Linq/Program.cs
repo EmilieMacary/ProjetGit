@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Linq
@@ -26,7 +27,14 @@ namespace Linq
             List<Student> studentsSup116 = students.Where(x => x.ID > 116 && x.Last=="Garcia").ToList();
             var studentsIds = students.Where(x => x.ID > 116 && x.Last == "Garcia").Select(x => x.Scores).ToList();
 
-            
+            List<List<int>> notreSelection = new List<List<int>>();
+            foreach (var student in students)
+            {
+                if(student.ID > 116 && student.Last == "Garcia")
+                {
+                    notreSelection.Add(student.Scores);
+                }
+            }
 
         }
     }
