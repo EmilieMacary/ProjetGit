@@ -34,11 +34,11 @@ namespace Linq
                 }
             }
 
-            //methodes linq "objects"
+            //methodes linq "méthode" (ou "objects")
             List<Student> studentsSup116 = students.Where(s => s.ID > 116 && s.Last == "Garcia").ToList();
             var studentsIds = students.Where(s => s.ID > 116 && s.Last == "Garcia").Select(s => s.Scores).ToList();
 
-            // methodes linq "sql like"
+            // methodes linq "requetes" (ou "sql like")
             var resultLinqSqlLike = from s in students
                                     where s.ID > 116 && s.Last == "Garcia"
                                     select s.Scores;
