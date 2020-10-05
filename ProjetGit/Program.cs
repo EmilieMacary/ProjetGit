@@ -33,7 +33,6 @@ namespace ProjetGit
             double tata = pi.SumAndRound(otherNumber);
             double tata2 = pi.Sum(otherNumber).Round();
 
-
         }
     }
 }
