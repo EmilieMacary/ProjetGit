@@ -24,18 +24,27 @@ namespace Linq
                 new Student {First="Michael", Last="Tucker", ID=122, Scores= new List<int> {94, 92, 91, 91}}
             };
 
-            List<Student> studentsSup116 = students.Where(x => x.ID > 116 && x.Last=="Garcia").ToList();
-            var studentsIds = students.Where(x => x.ID > 116 && x.Last == "Garcia").Select(x => x.Scores).ToList();
-
+            // methode old school
             List<List<int>> notreSelection = new List<List<int>>();
             foreach (var student in students)
             {
-                if(student.ID > 116 && student.Last == "Garcia")
+                if (student.ID > 116 && student.Last == "Garcia")
                 {
                     notreSelection.Add(student.Scores);
                 }
             }
 
+            //methodes linq "objects"
+            List<Student> studentsSup116 = students.Where(s => s.ID > 116 && s.Last == "Garcia").ToList();
+            var studentsIds = students.Where(s => s.ID > 116 && s.Last == "Garcia").Select(s => s.Scores).ToList();
+
+            // methodes linq "sql like"
+
+            var resultLinqSqlLike = from s in students
+                                    where s.ID > 116 && s.Last == "Garcia"
+                                    select s.Scores;
+
+            resultLinqSqlLike.ToList();
         }
     }
 }
