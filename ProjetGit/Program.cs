@@ -8,10 +8,7 @@ namespace ProjetGit
         static void Main(string[] args)
         {
             Animal myAnimal = new Animal("Chat");
-            Dog myDog = new Dog("chien")
-            {
-                BirthDate = DateTime.Now
-            };
+            Dog myDog = new Dog("chien") { BirthDate = new DateTime(2020, 02, 06) };
             myDog.Masters.Add("Jeremy Richard");
             myDog.Masters.Remove("Famille Dupont");
             myDog.Masters.RemoveAt(0);
@@ -22,12 +19,21 @@ namespace ProjetGit
             var difference = second - first;
 
             DateTime? maDateNullable = null;
-            if(maDateNullable == null)
+            if (maDateNullable == null)
             {
                 Console.WriteLine("La valeur de la date est nulle");
             }
 
-            Console.WriteLine("Hello World!");
+            var variable = myDog.MonExtension();
+            double pi = Math.PI;
+            var nombreArrondi = pi.Round();
+            Math.Round(pi);
+
+            double otherNumber = Math.E;
+            double tata = pi.SumAndRound(otherNumber);
+            double tata2 = pi.Sum(otherNumber).Round();
+
+
         }
     }
 }
