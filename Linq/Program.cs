@@ -39,12 +39,15 @@ namespace Linq
             var studentsIds = students.Where(s => s.ID > 116 && s.Last == "Garcia").Select(s => s.Scores).ToList();
 
             // methodes linq "sql like"
-
             var resultLinqSqlLike = from s in students
                                     where s.ID > 116 && s.Last == "Garcia"
                                     select s.Scores;
 
             resultLinqSqlLike.ToList();
+
+            var moyenneStudent = students.Select(s => new {Id = s.ID, Moyenne = s.Scores.Average() }).OrderByDescending(s => s.Moyenne).ToList();
+
+
         }
     }
 }
