@@ -100,6 +100,31 @@ namespace Linq
             var studentAge30 = students.GroupBy(s => s.Age / 10 * 10).Where(x => x.Key == 30).ToList();
 
             var StudentMajor = students[3].IsMajor();
+
+            Student student1 = new Student
+            {
+                First = "Mickael"
+            };
+
+            StudentStruct student2 = new StudentStruct
+            {
+                First = "Mickael"
+            };
+
+            FunctionParametersClass(student1);
+            FunctionParametersStruc(student2);
+
+            ColorEnum maCouleur = (ColorEnum)10;
+        }
+
+        static void FunctionParametersClass(Student student)
+        {
+            student.First = "Toto";
+        }
+
+        static void FunctionParametersStruc(StudentStruct student)
+        {
+            student.First = "Toto";
         }
     }
 }
