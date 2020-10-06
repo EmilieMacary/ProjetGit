@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetGit", "ProjetGit\ProjetGit.csproj", "{C572EABC-C43F-4B74-9870-071C95FA8D71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq", "Linq\Linq.csproj", "{226C51ED-F3C0-4F43-8311-B1F433BF9B4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "Linq\Linq.csproj", "{226C51ED-F3C0-4F43-8311-B1F433BF9B4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonProjetDeTestsUnitaires", "MonProjetDeTestsUnitaires\MonProjetDeTestsUnitaires.csproj", "{81665853-FC99-466A-8529-D5F1C341CB1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{226C51ED-F3C0-4F43-8311-B1F433BF9B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226C51ED-F3C0-4F43-8311-B1F433BF9B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226C51ED-F3C0-4F43-8311-B1F433BF9B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81665853-FC99-466A-8529-D5F1C341CB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81665853-FC99-466A-8529-D5F1C341CB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81665853-FC99-466A-8529-D5F1C341CB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81665853-FC99-466A-8529-D5F1C341CB1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

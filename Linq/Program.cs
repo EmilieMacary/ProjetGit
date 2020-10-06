@@ -64,15 +64,15 @@ namespace Linq
             var StudentAverage = students.Select(s => s.Scores.Average()).ToList();
 
 
-            (int val1, string val2, bool val3) monTuple = (33, "toto", true);           
+            (int val1, string val2, bool val3) monTuple = (33, "toto", true);
 
-            var StudentIDAverage = students.Select(s => new{ id = s.ID, name= s.First,moy = s.Scores.Average()}).ToList();
+            var StudentIDAverage = students.Select(s => new { id = s.ID, name = s.First, moy = s.Scores.Average() }).ToList();
 
             int studentId = StudentIDAverage[3].id;
 
 
             //Récupérer les trois premiers étudiants qui ont la moyenne la plus grande avec leur moyenne
-            
+
             var studentList = students.Take(3).ToList();
             var studentMean = students.OrderByDescending(s => s.Scores.Average()).Take(3).ToList();
 
@@ -91,7 +91,7 @@ namespace Linq
             var studentWithFisrtNameLastName = students.OrderBy(x => x.First).ThenBy(x => x.Last).ToList();
 
             // nombre d'étudiant par tranche d'ages
-            
+
             //var studentListAge = students.Count(s => s.Age/10 * 10).ToList();
 
             var studentAge = students.GroupBy(s => s.Age / 10 * 10).ToList();
@@ -99,7 +99,7 @@ namespace Linq
             // tous les etudiants qui sont trentenaires
             var studentAge30 = students.GroupBy(s => s.Age / 10 * 10).Where(x => x.Key == 30).ToList();
 
-            var StudentMajor = students[3].IsMajor();
+            var StudentMajor = students[3].IsMajorWithTuple();
 
             Student student1 = new Student
             {
