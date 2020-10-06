@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using RomanNumeralsConsole;
+using System.Collections.Generic;
 
 namespace RomanNumeralsTest
 {
@@ -12,34 +13,27 @@ namespace RomanNumeralsTest
             Assert.Equal(1, RomanNumerals.Translate("I"));
         }
 
-        [Fact]
-        public void ReturnVwhen5()
+        [Theory]
+        [InlineData("I",1)]
+        [InlineData("II",2)]
+        [InlineData("III", 3)]
+        [InlineData("IV", 4)]
+        [InlineData("V", 5)]
+        //[InlineData("VI", 5)]
+        //[InlineData("VII", 5)]
+        //[InlineData("VII", 5)]
+        //[InlineData("IX", 9)]
+        [InlineData("X", 10)]
+
+        public void ReturnResultwhenRomanNumber(string romanNumber, int result)
         {
-            Assert.Equal(5, RomanNumerals.Translate("V"));
+            Assert.Equal(result, RomanNumerals.Translate(romanNumber));
         }
 
         [Fact]
-        public void ReturnXwhen10()
+        public void Return()
         {
-            Assert.Equal(10, RomanNumerals.Translate("X"));
-        }
-
-        [Fact]
-        public void ReturnIIwhen2()
-        {
-            Assert.Equal(2, RomanNumerals.Translate("II"));
-        }
-
-        [Fact]
-        public void ReturnIIIwhen3()
-        {
-            Assert.Equal(3, RomanNumerals.Translate("III"));
-        }
-
-        [Fact]
-        public void ReturnIVwhen4()
-        {
-            Assert.Equal(4, RomanNumerals.Translate("IV"));
+            Assert.Throws<KeyNotFoundException>(() => RomanNumerals.Translate("G"));
         }
     }
 }

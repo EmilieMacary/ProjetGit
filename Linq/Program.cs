@@ -28,7 +28,7 @@ namespace Linq
             };
 
             // methode old school
-            List<List<int>> notreSelection = new List<List<int>>();
+            var notreSelection = new List<List<int>>();
             foreach (var student in students)
             {
                 if (student.ID > 116 && student.Last == "Garcia")

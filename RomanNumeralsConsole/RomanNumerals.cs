@@ -6,16 +6,20 @@ namespace RomanNumeralsConsole
 {
     public class RomanNumerals
     {
+        static readonly Dictionary<string, int> RomanDigitDictionary = new Dictionary<string, int>()
+        {
+            {"I", 1},
+            {"V", 5},
+            {"X", 10}
+        };
+
         public static int Translate (string romanNumber)
         {
             if (romanNumber.Length == 1)
             {
-                if (romanNumber == "I")
-                    return 1;
-                else if (romanNumber == "V")
-                    return 5;
-                else if (romanNumber == "X")
-                    return 10;
+                //RomanDigitDictionary.TryGetValue(romanNumber, out int numberResult);
+                
+                return RomanDigitDictionary[romanNumber]; 
             }
             else
             {
