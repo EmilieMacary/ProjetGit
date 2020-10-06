@@ -45,6 +45,38 @@ namespace Linq
                                     select s.Scores;
 
             resultLinqSqlLike.ToList();
+
+
+            // var resultStudentMean = from s in students
+            //                         select s.Scores.Average;
+
+            List<double> ScoreAverage = new List<double>();
+
+            foreach (var student in students)
+            {
+                var resultStudentAverage = student.Scores.Average();
+                ScoreAverage.Add(resultStudentAverage);
+            }
+
+            var StudentAverage = students.Select(s => s.Scores.Average()).ToList();
+
+
+            (int val1, string val2, bool val3) monTuple = (33, "toto", true);           
+
+            var StudentIDAverage = students.Select(s => new{ id = s.ID, name= s.First,moy = s.Scores.Average()}).ToList();
+
+            int studentId = StudentIDAverage[3].id;
+
+
+            //Récupérer les trois premiers étudiants qui ont la moyenne la plus grande avec leur moyenne
+            
+            var studentList = students.Take(3).ToList();
+            var studentMean = students.OrderByDescending(s => s.Scores.Average()).Take(3).ToList();
+
+            var studentMeanList = students.Select(s => new { id = s.ID, name = s.First, moy = s.Scores.Average() }).OrderByDescending(x => x.moy).Take(3).ToList();
+
+
+            
         }
     }
 }
