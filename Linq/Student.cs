@@ -8,5 +8,17 @@ namespace Linq
         public string Last { get; set; }
         public int ID { get; set; }
         public List<int> Scores;
+
+        public int Age { get; set; }
+
+
+        //Tuple
+        public (int,bool) IsMajor()
+        {
+            if (Age > 18)
+                return (ID, true);
+            else
+                return (ID, false);
+        }
     }
 }
