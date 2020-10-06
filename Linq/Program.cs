@@ -21,7 +21,10 @@ namespace Linq
                 new Student {First="Lance", Last="Tucker", ID=119, Scores= new List<int> {68, 79, 88, 92}},
                 new Student {First="Terry", Last="Adams", ID=120, Scores= new List<int> {99, 82, 81, 79}},
                 new Student {First="Eugene", Last="Zabokritski", ID=121, Scores= new List<int> {96, 85, 91, 60}},
-                new Student {First="Michael", Last="Tucker", ID=122, Scores= new List<int> {94, 92, 91, 91}}
+                new Student {First="Eugenie", Last="Zabok", ID=123, Scores= new List<int> {25, 28, 12, 15}},
+                new Student {First="Michael", Last="Tucker", ID=122, Scores= new List<int> {94, 92, 91, 91}},
+                new Student {First="Claire", Last="Bidet", ID=124, Scores= new List<int> {94, 92, 91, 91}},
+                new Student {First="Claire", Last="Aragon", ID=125, Scores= new List<int> {94, 92, 91, 91}}
             };
 
             // methode old school
@@ -75,8 +78,17 @@ namespace Linq
 
             var studentMeanList = students.Select(s => new { id = s.ID, name = s.First, moy = s.Scores.Average() }).OrderByDescending(x => x.moy).Take(3).ToList();
 
+            // les trois etudiants qui possedent les notes les plus basses
+            var studentWithMinScore = students.Select(s => new { id = s.ID, name = s.First, min = s.Scores.Min() }).OrderBy(x => x.min).Take(3).ToList();
 
-            
+            // les trois premiers etudiants dans l'ordre alphabetique
+            var studentWithMinName = students.Select(s => new { id = s.ID, name = s.First, min = s.First.Min() }).OrderBy(x => x.min).Take(3).ToList();
+
+            // les etudiants par ordre alphabétique des prénoms
+            var studentWithName = students.OrderBy(x => x.First).ToList();
+
+            // classement par ordre alphabetique des prénoms puis des noms
+            var studentWithFisrtNameLastName = students.OrderBy(x => x.First).ThenBy(x => x.Last).ToList();
         }
     }
 }
