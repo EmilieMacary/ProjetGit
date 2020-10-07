@@ -1,6 +1,7 @@
 ﻿using DecouverteEntityFrameworkCodeFirst;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DecouverteEntityFrameworkQuery
@@ -51,6 +52,34 @@ namespace DecouverteEntityFrameworkQuery
                 Console.WriteLine($"Le client {coDate.customer.FirstName} {coDate.customer.Name} a fait la commande numéro {coDate.order.Id} à la date du {coDate.order.Date}");
             }
 
+            //Item monItem = new Item { Name = "Scrabble", Description = "Jeu de lettres", Price = 27.90M };
+            //Item monItem2 = new Item { Name = "Domino", Price = 15.90M };
+            //Item monItem3 = new Item { Name = "Jeu de 32 cartes", Price = 27.90M };
+            //List<Item> listItems = new List<Item> { monItem, monItem2, monItem3 };
+            //myDbContext.Items.AddRange(listItems);
+            //myDbContext.SaveChanges();
+
+            var item = AskItemToAddInStore();
+            AddItemInStore(myDbContext, item);
+
+        }
+
+        public static Item AskItemToAddInStore()
+        {
+            Console.WriteLine("Rentrez le nom de votre article");
+            var nomArticle = Console.ReadLine().Trim();
+            Console.WriteLine("Rentrez la descrition de votre article");
+            var descriptionArticle = Console.ReadLine().Trim();
+            Console.WriteLine("Rentrez le prix de votre article");
+            var prixArticle = decimal.Parse(Console.ReadLine().Trim());
+            Item item = new Item { Name = nomArticle, Description = descriptionArticle, Price = prixArticle };
+            return item;
+        }
+
+        public static void AddItemInStore(MyDbContext context, Item item)
+        {
+            context.Items.Add(item);
+            context.SaveChanges();
         }
     }
 }
