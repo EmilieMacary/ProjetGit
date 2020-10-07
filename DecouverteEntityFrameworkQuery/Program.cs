@@ -17,42 +17,42 @@ namespace DecouverteEntityFrameworkQuery
             //optionsBuilder.UseSqlServer(@"Server=.\sqlexpress;Database=DecouverteEntityFrameworkCodeFirst;Trusted_Connection=True;");
             MyDbContext = new MyDbContext(optionsBuilder.Options);
 
-            var items = (from i in MyDbContext.Items
-                         select i).ToList();
+            //var items = (from i in MyDbContext.Items
+            //             select i).ToList();
 
-            var customers = (from c in MyDbContext.Customers
-                             select c).ToList();
+            //var customers = (from c in MyDbContext.Customers
+            //                 select c).ToList();
 
-            var customersOrders = (from customer in MyDbContext.Customers
-                                   join order in MyDbContext.Orders on customer.Id equals order.CustomerId
-                                   select new { customer, order }).ToList();
+            //var customersOrders = (from customer in MyDbContext.Customers
+            //                       join order in MyDbContext.Orders on customer.Id equals order.CustomerId
+            //                       select new { customer, order }).ToList();
 
-            foreach (var co in customersOrders)
-            {
-                Console.WriteLine($"Le client {co.customer.FirstName} {co.customer.Name} a fait la commande numéro {co.order.Id} à la date du {co.order.Date}");
-            }
+            //foreach (var co in customersOrders)
+            //{
+            //    Console.WriteLine($"Le client {co.customer.FirstName} {co.customer.Name} a fait la commande numéro {co.order.Id} à la date du {co.order.Date}");
+            //}
 
-            var ReferenceDate = new DateTime(2020, 02, 01);
-            var customersDateOrders = (from customer in MyDbContext.Customers
-                                       join order in MyDbContext.Orders on customer.Id equals order.CustomerId
-                                       where order.Date > ReferenceDate
-                                       select new { customer, order }).ToList();
+            //var ReferenceDate = new DateTime(2020, 02, 01);
+            //var customersDateOrders = (from customer in MyDbContext.Customers
+            //                           join order in MyDbContext.Orders on customer.Id equals order.CustomerId
+            //                           where order.Date > ReferenceDate
+            //                           select new { customer, order }).ToList();
 
-            Console.WriteLine($"Commande passée après le {ReferenceDate}");
-            foreach (var co in customersDateOrders)
-            {
-                Console.WriteLine($"Le client {co.customer.FirstName} {co.customer.Name} a fait la commande numéro {co.order.Id} à la date du {co.order.Date}");
-            }
+            //Console.WriteLine($"Commande passée après le {ReferenceDate}");
+            //foreach (var co in customersDateOrders)
+            //{
+            //    Console.WriteLine($"Le client {co.customer.FirstName} {co.customer.Name} a fait la commande numéro {co.order.Id} à la date du {co.order.Date}");
+            //}
 
-            var customersDateOrders2 = from co in customersOrders
-                                       where co.order.Date > ReferenceDate
-                                       select co;
+            //var customersDateOrders2 = from co in customersOrders
+            //                           where co.order.Date > ReferenceDate
+            //                           select co;
 
-            Console.WriteLine($"Nouvelle methode : Commande passée après le {ReferenceDate}");
-            foreach (var coDate in customersDateOrders2)
-            {
-                Console.WriteLine($"Le client {coDate.customer.FirstName} {coDate.customer.Name} a fait la commande numéro {coDate.order.Id} à la date du {coDate.order.Date}");
-            }
+            //Console.WriteLine($"Nouvelle methode : Commande passée après le {ReferenceDate}");
+            //foreach (var coDate in customersDateOrders2)
+            //{
+            //    Console.WriteLine($"Le client {coDate.customer.FirstName} {coDate.customer.Name} a fait la commande numéro {coDate.order.Id} à la date du {coDate.order.Date}");
+            //}
 
             //Item monItem = new Item { Name = "Scrabble", Description = "Jeu de lettres", Price = 27.90M };
             //Item monItem2 = new Item { Name = "Domino", Price = 15.90M };
@@ -60,15 +60,44 @@ namespace DecouverteEntityFrameworkQuery
             //List<Item> listItems = new List<Item> { monItem, monItem2, monItem3 };
             //MyDbContext.Items.AddRange(listItems);
             //MyDbContext.SaveChanges();
+            var choix = 0;
+            while (choix < 5)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Entrez votre choix (1)créer - (2)Modifier - (3)Supprimer - (4)-Liste (Autre)Sortir");
+                choix = int.Parse(Console.ReadLine());
+                switch (choix)
+                {
+                    case 1:
+                        var item = AskItemToAddInStore();
+                        AddItemInStore(item);
+                        break;
 
-            var item = AskItemToAddInStore();
-            AddItemInStore(item);
+                    case 2:
+                        var updateItem = AskItemToUpdateInStore();
+                        UpdateItemInStore(updateItem);
+                        break;
 
-            Item removeItem = AskItemToRemoveFromStore();
-            RemoveItemStore(removeItem);
+                    case 3:
+                        var removeItem = AskItemToRemoveFromStore();
+                        RemoveItemStore(removeItem);
+                        break;
+                    case 4:
+                        var listItems = ItemsFormStore();
+                        ShowItems(listItems);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
-            Item updateItem = AskItemToUpdateInStore();
-            UpdateItemInStore(item);
+        private static void ShowItems(List<Item> listItems)
+        {
+            foreach (var item in listItems)
+            {
+                Console.WriteLine($"Article : Id = {item.Id} Name = {item.Name} , Price = {item.Price}, Description = {item.Description}");
+            }
         }
 
         private static Item AskItemToRemoveFromStore()
@@ -78,6 +107,12 @@ namespace DecouverteEntityFrameworkQuery
 
             //Item removeItem = ItemByIdQuery(context, ReadId);
             return ItemByIdQuery(ReadId);
+        }
+
+        private static List<Item> ItemsFormStore()
+        {
+            return (from it in MyDbContext.Items
+                    select it).ToList();
         }
 
         private static Item ItemByIdQuery(int ReadId)
@@ -113,7 +148,7 @@ namespace DecouverteEntityFrameworkQuery
 
         public static void UpdateItemInStore(Item item)
         {
-            MyDbContext.Items.Update(item);
+            //MyDbContext.Items.Update(item);
             MyDbContext.SaveChanges();
         }
 
@@ -121,7 +156,6 @@ namespace DecouverteEntityFrameworkQuery
         {
             Console.WriteLine("Rentrez l'ID de votre article à modifier");
             var idDeArticle = int.Parse(Console.ReadLine().Trim());
-
 
             var item = ItemByIdQuery(idDeArticle);
             Console.WriteLine($"Article a modifier : Name = {item.Name} , Price = {item.Price}, Description = {item.Description}");
@@ -132,7 +166,6 @@ namespace DecouverteEntityFrameworkQuery
             item.Description = Console.ReadLine().Trim();
             Console.WriteLine("Rentrez le nouveu prix de votre article");
             item.Price = decimal.Parse(Console.ReadLine().Trim());
-
             return item;
         }
     }
