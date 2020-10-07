@@ -22,5 +22,10 @@ namespace DecouverteEntityFrameworkCodeFirst
 
         [Column(TypeName = "char(10)")]
         public string PhoneNumber { get; set; }
+
+        [MaxLength(30)]
+        public string City { get; set; }
+
+        public DateTime? BirthDay { get; set; }
     }
 }
