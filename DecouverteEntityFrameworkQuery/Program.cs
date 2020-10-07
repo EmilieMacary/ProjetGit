@@ -8,21 +8,23 @@ namespace DecouverteEntityFrameworkQuery
 {
     class Program
     {
+        public static MyDbContext MyDbContext;
+
         static void Main(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
             optionsBuilder.UseSqlServer(@"Server=51.178.46.82,1533;Initial Catalog=FormationCSharpSQL;Persist Security Info=False;User ID=FormationCSharpSQL;Password=FormationCSharp&SQL;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;");
             //optionsBuilder.UseSqlServer(@"Server=.\sqlexpress;Database=DecouverteEntityFrameworkCodeFirst;Trusted_Connection=True;");
-            MyDbContext myDbContext = new MyDbContext(optionsBuilder.Options);
+            MyDbContext = new MyDbContext(optionsBuilder.Options);
 
-            var items = (from i in myDbContext.Items
+            var items = (from i in MyDbContext.Items
                          select i).ToList();
 
-            var customers = (from c in myDbContext.Customers
+            var customers = (from c in MyDbContext.Customers
                              select c).ToList();
 
-            var customersOrders = (from customer in myDbContext.Customers
-                                   join order in myDbContext.Orders on customer.Id equals order.CustomerId
+            var customersOrders = (from customer in MyDbContext.Customers
+                                   join order in MyDbContext.Orders on customer.Id equals order.CustomerId
                                    select new { customer, order }).ToList();
 
             foreach (var co in customersOrders)
@@ -31,8 +33,8 @@ namespace DecouverteEntityFrameworkQuery
             }
 
             var ReferenceDate = new DateTime(2020, 02, 01);
-            var customersDateOrders = (from customer in myDbContext.Customers
-                                       join order in myDbContext.Orders on customer.Id equals order.CustomerId
+            var customersDateOrders = (from customer in MyDbContext.Customers
+                                       join order in MyDbContext.Orders on customer.Id equals order.CustomerId
                                        where order.Date > ReferenceDate
                                        select new { customer, order }).ToList();
 
@@ -56,24 +58,39 @@ namespace DecouverteEntityFrameworkQuery
             //Item monItem2 = new Item { Name = "Domino", Price = 15.90M };
             //Item monItem3 = new Item { Name = "Jeu de 32 cartes", Price = 27.90M };
             //List<Item> listItems = new List<Item> { monItem, monItem2, monItem3 };
-            //myDbContext.Items.AddRange(listItems);
-            //myDbContext.SaveChanges();
+            //MyDbContext.Items.AddRange(listItems);
+            //MyDbContext.SaveChanges();
 
             var item = AskItemToAddInStore();
-            AddItemInStore(myDbContext, item);
+            AddItemInStore(item);
 
+            Item removeItem = AskItemToRemoveFromStore();
+            RemoveItemStore(removeItem);
+
+            Item updateItem = AskItemToUpdateInStore();
+            UpdateItemInStore(item);
+        }
+
+        private static Item AskItemToRemoveFromStore()
+        {
             Console.WriteLine("Entrer l'id de l'article a supprimer:");
             int ReadId = int.Parse(Console.ReadLine());
 
-            Item removeItem = (from it in myDbContext.Items 
-                              where it.Id == ReadId
-                              select it).Single();
+            //Item removeItem = ItemByIdQuery(context, ReadId);
+            return ItemByIdQuery(ReadId);
+        }
 
+        private static Item ItemByIdQuery(int ReadId)
+        {
+            return (from it in MyDbContext.Items
+                    where it.Id == ReadId
+                    select it).Single();
+        }
 
-            myDbContext.Items.Remove(removeItem);
-            myDbContext.SaveChanges();
-
-
+        private static void RemoveItemStore(Item item)
+        {
+            MyDbContext.Items.Remove(item);
+            MyDbContext.SaveChanges();
         }
 
         public static Item AskItemToAddInStore()
@@ -88,10 +105,35 @@ namespace DecouverteEntityFrameworkQuery
             return item;
         }
 
-        public static void AddItemInStore(MyDbContext context, Item item)
+        public static void AddItemInStore(Item item)
         {
-            context.Items.Add(item);
-            context.SaveChanges();
+            MyDbContext.Items.Add(item);
+            MyDbContext.SaveChanges();
+        }
+
+        public static void UpdateItemInStore(Item item)
+        {
+            MyDbContext.Items.Update(item);
+            MyDbContext.SaveChanges();
+        }
+
+        public static Item AskItemToUpdateInStore()
+        {
+            Console.WriteLine("Rentrez l'ID de votre article à modifier");
+            var idDeArticle = int.Parse(Console.ReadLine().Trim());
+
+
+            var item = ItemByIdQuery(idDeArticle);
+            Console.WriteLine($"Article a modifier : Name = {item.Name} , Price = {item.Price}, Description = {item.Description}");
+
+            Console.WriteLine("Rentrez le nouveu nom de votre article");
+            item.Name = Console.ReadLine().Trim();
+            Console.WriteLine("Rentrez la nouvelle descrition de votre article");
+            item.Description = Console.ReadLine().Trim();
+            Console.WriteLine("Rentrez le nouveu prix de votre article");
+            item.Price = decimal.Parse(Console.ReadLine().Trim());
+
+            return item;
         }
     }
 }
