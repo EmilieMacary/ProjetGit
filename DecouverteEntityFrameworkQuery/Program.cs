@@ -17,8 +17,9 @@ namespace DecouverteEntityFrameworkQuery
             var items = (from i in myDbContext.Items
                          select i).ToList();
 
-            var customers = (from i in myDbContext.Customers
-                             select i).ToList();
+            var customers = (from c in myDbContext.Customers
+                             select c).ToList();
+
 
         }
     }
