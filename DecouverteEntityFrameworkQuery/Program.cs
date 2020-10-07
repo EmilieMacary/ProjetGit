@@ -9,6 +9,7 @@ namespace DecouverteEntityFrameworkQuery
     class Program
     {
         public static MyDbContext MyDbContext;
+        public static Query Query;
 
         static void Main(string[] args)
         {
@@ -16,7 +17,9 @@ namespace DecouverteEntityFrameworkQuery
             optionsBuilder.UseSqlServer(@"Server=51.178.46.82,1533;Initial Catalog=FormationCSharpSQL;Persist Security Info=False;User ID=FormationCSharpSQL;Password=FormationCSharp&SQL;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;");
             //optionsBuilder.UseSqlServer(@"Server=.\sqlexpress;Database=DecouverteEntityFrameworkCodeFirst;Trusted_Connection=True;");
             MyDbContext = new MyDbContext(optionsBuilder.Options);
+            Query = new Query(MyDbContext);
 
+            #region code commenté
             //var items = (from i in MyDbContext.Items
             //             select i).ToList();
 
@@ -60,6 +63,8 @@ namespace DecouverteEntityFrameworkQuery
             //List<Item> listItems = new List<Item> { monItem, monItem2, monItem3 };
             //MyDbContext.Items.AddRange(listItems);
             //MyDbContext.SaveChanges();
+            #endregion
+
             var choix = 0;
             while (choix < 5)
             {
@@ -70,20 +75,20 @@ namespace DecouverteEntityFrameworkQuery
                 {
                     case 1:
                         var item = AskItemToAddInStore();
-                        AddItemInStore(item);
+                        Query.AddItemInStore(item);
                         break;
 
                     case 2:
                         var updateItem = AskItemToUpdateInStore();
-                        UpdateItemInStore(updateItem);
+                        Query.UpdateItemInStore(updateItem);
                         break;
 
                     case 3:
                         var removeItem = AskItemToRemoveFromStore();
-                        RemoveItemStore(removeItem);
+                        Query.RemoveItemStore(removeItem);
                         break;
                     case 4:
-                        var listItems = ItemsFormStore();
+                        var listItems = Query.ItemsFormStore();
                         ShowItems(listItems);
                         break;
                     default:
@@ -106,27 +111,12 @@ namespace DecouverteEntityFrameworkQuery
             int ReadId = int.Parse(Console.ReadLine());
 
             //Item removeItem = ItemByIdQuery(context, ReadId);
-            return ItemByIdQuery(ReadId);
+            return Query.ItemByIdQuery(ReadId);
         }
 
-        private static List<Item> ItemsFormStore()
-        {
-            return (from it in MyDbContext.Items
-                    select it).ToList();
-        }
+        
 
-        private static Item ItemByIdQuery(int ReadId)
-        {
-            return (from it in MyDbContext.Items
-                    where it.Id == ReadId
-                    select it).Single();
-        }
-
-        private static void RemoveItemStore(Item item)
-        {
-            MyDbContext.Items.Remove(item);
-            MyDbContext.SaveChanges();
-        }
+        
 
         public static Item AskItemToAddInStore()
         {
@@ -140,24 +130,14 @@ namespace DecouverteEntityFrameworkQuery
             return item;
         }
 
-        public static void AddItemInStore(Item item)
-        {
-            MyDbContext.Items.Add(item);
-            MyDbContext.SaveChanges();
-        }
-
-        public static void UpdateItemInStore(Item item)
-        {
-            //MyDbContext.Items.Update(item);
-            MyDbContext.SaveChanges();
-        }
+        
 
         public static Item AskItemToUpdateInStore()
         {
             Console.WriteLine("Rentrez l'ID de votre article à modifier");
             var idDeArticle = int.Parse(Console.ReadLine().Trim());
 
-            var item = ItemByIdQuery(idDeArticle);
+            var item = Query.ItemByIdQuery(idDeArticle);
             Console.WriteLine($"Article a modifier : Name = {item.Name} , Price = {item.Price}, Description = {item.Description}");
 
             Console.WriteLine("Rentrez le nouveu nom de votre article");

@@ -1,0 +1,12 @@
+﻿@using DecouverteEntityFrameworkCodeFirst;
+@model MonSuperViewModel
+
+<h1>Ceci est ma page Item/index</h1>
+<ul>
+    @foreach (var item in Model.ListItem)
+    {
+        <li>@item.Id @item.Name @item.Description @item.Price</li>
+    }
+    @Model.itemsNumber;
+
+</ul>
