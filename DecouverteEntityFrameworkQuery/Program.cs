@@ -20,6 +20,15 @@ namespace DecouverteEntityFrameworkQuery
             var customers = (from c in myDbContext.Customers
                              select c).ToList();
 
+            var customersOrders = (from customer in myDbContext.Customers
+                          join order in myDbContext.Orders on customer.Id equals order.CustomerId
+                          select new { customer, order }).ToList();
+
+            foreach(var co in customersOrders)
+            {
+                Console.WriteLine($"Le client {co.customer.FirstName} {co.customer.Name} a fait la commande numéro {co.order.Id} à la date du {co.order.Date}");
+            }
+
 
         }
     }
