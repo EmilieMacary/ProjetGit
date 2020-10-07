@@ -62,6 +62,18 @@ namespace DecouverteEntityFrameworkQuery
             var item = AskItemToAddInStore();
             AddItemInStore(myDbContext, item);
 
+            Console.WriteLine("Entrer l'id de l'article a supprimer:");
+            int ReadId = int.Parse(Console.ReadLine());
+
+            Item removeItem = (from it in myDbContext.Items 
+                              where it.Id == ReadId
+                              select it).Single();
+
+
+            myDbContext.Items.Remove(removeItem);
+            myDbContext.SaveChanges();
+
+
         }
 
         public static Item AskItemToAddInStore()
