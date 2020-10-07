@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecouvrteException", "Decou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCodeFirstExample", "EFCodeFirstExample\EFCodeFirstExample.csproj", "{5ED92A7C-D388-418D-937B-C2DC350F85DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecouverteAspNetCore", "DecouverteAspNetCore\DecouverteAspNetCore.csproj", "{3FC76B1E-8806-48F3-9A67-553F171E6552}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecouverteAspNetCore", "DecouverteAspNetCore\DecouverteAspNetCore.csproj", "{3FC76B1E-8806-48F3-9A67-553F171E6552}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecouverteAdo.NET", "DecouverteAdo.NET\DecouverteAdo.NET.csproj", "{54882F1C-C562-4AE4-AD7D-6140AE3EC1D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{3FC76B1E-8806-48F3-9A67-553F171E6552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FC76B1E-8806-48F3-9A67-553F171E6552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FC76B1E-8806-48F3-9A67-553F171E6552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54882F1C-C562-4AE4-AD7D-6140AE3EC1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54882F1C-C562-4AE4-AD7D-6140AE3EC1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54882F1C-C562-4AE4-AD7D-6140AE3EC1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54882F1C-C562-4AE4-AD7D-6140AE3EC1D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
