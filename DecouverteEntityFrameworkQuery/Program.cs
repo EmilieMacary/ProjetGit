@@ -88,7 +88,7 @@ namespace DecouverteEntityFrameworkQuery
                         Query.RemoveItemStore(removeItem);
                         break;
                     case 4:
-                        var listItems = Query.ItemsFormStore();
+                        var listItems = Query.ItemsFromStore();
                         ShowItems(listItems);
                         break;
                     default:

@@ -21,7 +21,7 @@ namespace DecouverteAspNetCore.Controllers
         public IActionResult Index()
         {
             Query = new Query(MyDbContext);
-            var listItems = Query.ItemsFormStore();
+            var listItems = Query.ItemsFromStore();
             MonSuperViewModel monSuperViewModel = new MonSuperViewModel { ListItem = listItems };
             return View(monSuperViewModel);
         }

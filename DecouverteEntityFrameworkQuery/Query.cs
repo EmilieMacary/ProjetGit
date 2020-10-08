@@ -14,7 +14,7 @@ namespace DecouverteEntityFrameworkQuery
             Context = context;
         }
 
-        public List<Item> ItemsFormStore()
+        public List<Item> ItemsFromStore()
         {
             return (from it in Context.Items
                     select it).ToList();
