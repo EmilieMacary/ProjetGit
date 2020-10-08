@@ -11,6 +11,9 @@ namespace Generic
 
         public static Point operator +(Point first, Point second) => new Point { Abscissa = first.Abscissa, Ordinate = second.Ordinate };
 
+
+        // exercice : redefinir la methode ToString() de Point de telle manière que le string retourné indique
+        // "coordonnées : (x, y)"
     }
 
 
