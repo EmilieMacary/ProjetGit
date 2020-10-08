@@ -41,26 +41,50 @@ namespace Calculette
         {
             Saisie += (string)((Button)sender).Content;
 
-            if (Operation == String.Empty)
-                PremierNombre = Double.Parse(Saisie);
+            if (Operation == string.Empty)
+                PremierNombre = double.Parse(Saisie);
             else
-                DeuxiemeNombre = Double.Parse(Saisie.Substring(Saisie.LastIndexOf(Operation) + 1));
+                DeuxiemeNombre = double.Parse(Saisie.Substring(Saisie.LastIndexOf(Operation) + 1));
 
             TextBoxResultat.Text = Saisie;
         }
 
-        private void ButtonClickPlus(object sender, RoutedEventArgs e)
+        private void ButtonClickOperation(object sender, RoutedEventArgs e)
         {
-            string OperationPlus = (string)((Button)sender).Content;
-            Saisie += OperationPlus;
-            Operation = OperationPlus;
-
+            Operation = (string)((Button)sender).Content;
+            Saisie += Operation;
             TextBoxResultat.Text = Saisie;
         }
+
 
         private void ButtonClickEgal(object sender, RoutedEventArgs e)
         {
-
+            //Operation 
+            //PremierNombre 
+            //DeuxiemeNombre 
+            switch (Operation)
+            {
+                case "+":
+                    Resultat = PremierNombre + DeuxiemeNombre;
+                    break;
+                case "-":
+                    Resultat = PremierNombre - DeuxiemeNombre;
+                    break;
+                case "*":
+                    Resultat = PremierNombre * DeuxiemeNombre;
+                    break;
+                case "/":
+                    Resultat = PremierNombre / DeuxiemeNombre;
+                    break;
+                default:
+                    break;
+            }
+            Saisie = Resultat.ToString();
+            TextBoxResultat.Text = Saisie;
+            Saisie = string.Empty;
+            PremierNombre = 0;
+            DeuxiemeNombre = 0;
+            Operation = string.Empty;
         }
     }
 }
