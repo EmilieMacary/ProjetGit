@@ -12,14 +12,16 @@ namespace Generic
             Point coordinate = new Point { Abscissa = 5, Ordinate = 3 };
 
 
-            var intString = StringValue.ToString(intNumber);
-            var floatString = StringValue.ToString(floatNumber);
-            var coordinateString = StringValue.ToString(coordinate);
+            var intString = StringValue.convertString1(intNumber);
+            var floatString = StringValue.convertString2(floatNumber);
+            var coordinateString = StringValue.convertString3(coordinate);
                    
-            var intStringGeneric = StringValueGeneric.ToString(intNumber);
-            var floatStringGeneric = StringValueGeneric.ToString(floatNumber);
-            var coordinateStringGeneric = StringValueGeneric.ToString(coordinate);
+            var intStringGeneric = StringValueGeneric.convertString(intNumber);
+            var floatStringGeneric = StringValueGeneric.convertString(floatNumber);
+            var coordinateStringGeneric = StringValueGeneric.convertString(coordinate);
 
+            var sentenceCoordinate = coordinate.ToString();
+            
         }
     }
 }

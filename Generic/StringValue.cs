@@ -6,17 +6,17 @@ namespace Generic
 {
     public class StringValue
     {
-        public static string ToString(int number1)
+        public static string convertString1(int number1)
         {
             return number1.ToString();
         }
 
-        public static string ToString(float number1)
+        public static string convertString2(float number1)
         {
             return number1.ToString();
         }
 
-        public static string ToString(Point c)
+        public static string convertString3(Point c)
         {
             return c.ToString();
         }

@@ -7,7 +7,7 @@ namespace Generic
 {
     public class StringValueGeneric
     {
-        public static string ToString<T>(T t)
+        public static string convertString<T>(T t)
         {
             return t.ToString();
         }

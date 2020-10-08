@@ -14,6 +14,11 @@ namespace Generic
 
         // exercice : redefinir la methode ToString() de Point de telle manière que le string retourné indique
         // "coordonnées : (x, y)"
+        public override string ToString()
+        {
+            string setenceToReturn = $"coordonnes : ({Abscissa}, {Ordinate})";
+            return setenceToReturn;
+        }
     }
 
 
