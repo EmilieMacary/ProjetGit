@@ -59,9 +59,6 @@ namespace Calculette
 
         private void ButtonClickEgal(object sender, RoutedEventArgs e)
         {
-            //Operation 
-            //PremierNombre 
-            //DeuxiemeNombre 
             switch (Operation)
             {
                 case "+":
