@@ -75,14 +75,25 @@ namespace DecouverteAdo.NET
                 // ExecuteNonQuery
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    string firstname = "prenom MAJ";
-                    string name = "nom MAJ";
+                    Console.WriteLine("Entrer le nom à ajouter : ");
+                    var name = Console.ReadLine();
+                    Console.WriteLine("Entrer le prénom à ajouter : ");
+                    var firstname = Console.ReadLine();
+                    Console.WriteLine("Entrer l'email à ajouter : ");
+                    var email = Console.ReadLine();
+                    Console.WriteLine("Entrer la date de naissance à ajouter : ");
+                    var birthDay = Console.ReadLine();
 
                     command.CommandText =
-                        $" UPDATE Customers" +
-                        $" SET FirstName = '{firstname}'" +
-                        $", Name = '{name}'" +
-                        $"WHERE id = 3 ";
+                        $" INSERT INTO Customers (FirstName, Name, Email, BirthDay)" +
+                        $" VALUES ('{firstname}','{name}', '{email}', '{birthDay}')";
+
+
+                    //command.CommandText =
+                    //    $" UPDATE Customers" +
+                    //    $" SET FirstName = '{firstname}'" +
+                    //    $", Name = '{name}'" +
+                    //    $"WHERE id = 3 ";
 
                     int updatesNumber = command.ExecuteNonQuery();
                     WriteLine($"{updatesNumber} client MAJ");
