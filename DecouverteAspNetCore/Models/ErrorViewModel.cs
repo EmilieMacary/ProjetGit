@@ -1,5 +1,3 @@
-using System;
-
 namespace DecouverteAspNetCore.Models
 {
     public class ErrorViewModel

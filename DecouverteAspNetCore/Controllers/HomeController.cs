@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DecouverteAspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using DecouverteAspNetCore.Models;
+using System.Diagnostics;
 
 namespace DecouverteAspNetCore.Controllers
 {

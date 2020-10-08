@@ -9,7 +9,7 @@ namespace DecouverteEntityFrameworkCodeFirst
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrdersItems { get; set; }
 
-        
+
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }

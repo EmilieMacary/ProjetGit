@@ -13,7 +13,7 @@ namespace Linq
 
 
         //Tuple
-        public (int,bool) IsMajorWithTuple()
+        public (int, bool) IsMajorWithTuple()
         {
             if (Age > 18)
                 return (ID, true);

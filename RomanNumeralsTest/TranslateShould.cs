@@ -1,7 +1,6 @@
-using System;
-using Xunit;
 using RomanNumeralsConsole;
 using System.Collections.Generic;
+using Xunit;
 
 namespace RomanNumeralsTest
 {
@@ -14,8 +13,8 @@ namespace RomanNumeralsTest
         }
 
         [Theory]
-        [InlineData("I",1)]
-        [InlineData("II",2)]
+        [InlineData("I", 1)]
+        [InlineData("II", 2)]
         [InlineData("III", 3)]
         [InlineData("IV", 4)]
         [InlineData("V", 5)]

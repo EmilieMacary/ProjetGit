@@ -1,5 +1,4 @@
 using Linq;
-using System;
 using Xunit;
 
 namespace MonProjetDeTestsUnitaires

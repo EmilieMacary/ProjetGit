@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Calculette
 {
@@ -20,68 +11,56 @@ namespace Calculette
     /// </summary>
     public partial class MainWindow : Window
     {
-        public double Resultat { get; set; }
-        public string Saisie { get; set; }
-        public string Operation { get; set; }
-        public double PremierNombre { get; set; }
-        public double DeuxiemeNombre { get; set; }
+        private const string PLUS = "+";
+        private const string MOINS = "-";
+        private const string MULTIPLIER = "*";
+        private const string DIVISER = "/";
+
+        public decimal Resultat { get; set; } = 0;
+        public string Saisie { get; set; } = string.Empty;
+        public string Operateur { get; set; } = string.Empty;
+        public decimal PremierNombre { get; set; } = 0;
+        public decimal DeuxiemeNombre { get; set; } = 0;
+
+        public Dictionary<string, string> OperateursMethodes = new Dictionary<string, string>() { { PLUS, "Add" }, { MOINS, "Subtract" }, { MULTIPLIER, "Multiply" }, { DIVISER, "Divide" } };
 
         public MainWindow()
         {
             InitializeComponent();
-
-            Saisie = String.Empty;
-            Resultat = 0;
-            PremierNombre = 0;
-            DeuxiemeNombre = 0;
-            Operation = String.Empty;
+            ButtonPlus.Content = PLUS;
+            ButtonMoins.Content = MOINS;
+            ButtonMultiplier.Content = MULTIPLIER;
+            ButtonDiviser.Content = DIVISER;
         }
 
-        private void ButtonClickDigit(object sender, RoutedEventArgs e)
+        private void ButtonClickChiffre(object sender, RoutedEventArgs e)
         {
             Saisie += (string)((Button)sender).Content;
 
-            if (Operation == string.Empty)
-                PremierNombre = double.Parse(Saisie);
+            if (Operateur == string.Empty)
+                PremierNombre = decimal.Parse(Saisie);
             else
-                DeuxiemeNombre = double.Parse(Saisie.Substring(Saisie.LastIndexOf(Operation) + 1));
+                DeuxiemeNombre = decimal.Parse(Saisie.Substring(Saisie.LastIndexOf(Operateur) + 1));
 
             TextBoxResultat.Text = Saisie;
         }
 
-        private void ButtonClickOperation(object sender, RoutedEventArgs e)
+        private void ButtonClickOperateur(object sender, RoutedEventArgs e)
         {
-            Operation = (string)((Button)sender).Content;
-            Saisie += Operation;
+            Operateur = (string)((Button)sender).Content;
+            Saisie += Operateur;
             TextBoxResultat.Text = Saisie;
         }
-
 
         private void ButtonClickEgal(object sender, RoutedEventArgs e)
         {
-            switch (Operation)
-            {
-                case "+":
-                    Resultat = PremierNombre + DeuxiemeNombre;
-                    break;
-                case "-":
-                    Resultat = PremierNombre - DeuxiemeNombre;
-                    break;
-                case "*":
-                    Resultat = PremierNombre * DeuxiemeNombre;
-                    break;
-                case "/":
-                    Resultat = PremierNombre / DeuxiemeNombre;
-                    break;
-                default:
-                    break;
-            }
+            MethodBase operation = typeof(decimal).GetMethod(OperateursMethodes[Operateur]);
+            Resultat = (decimal)operation.Invoke(null, new object[] { PremierNombre, DeuxiemeNombre });
             Saisie = Resultat.ToString();
             TextBoxResultat.Text = Saisie;
-            Saisie = string.Empty;
-            PremierNombre = 0;
+            Operateur = string.Empty;
+            PremierNombre = Resultat;
             DeuxiemeNombre = 0;
-            Operation = string.Empty;
         }
     }
 }

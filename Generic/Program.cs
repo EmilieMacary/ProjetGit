@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Generic
+﻿namespace Generic
 {
     class Program
     {
@@ -15,13 +12,13 @@ namespace Generic
             var intString = StringValue.convertString1(intNumber);
             var floatString = StringValue.convertString2(floatNumber);
             var coordinateString = StringValue.convertString3(coordinate);
-                   
+
             var intStringGeneric = StringValueGeneric.convertString(intNumber);
             var floatStringGeneric = StringValueGeneric.convertString(floatNumber);
             var coordinateStringGeneric = StringValueGeneric.convertString(coordinate);
 
             var sentenceCoordinate = coordinate.ToString();
-            
+
         }
     }
 }

@@ -20,22 +20,22 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Button Click="ButtonClickDigit"  Grid.Row="0" Grid.Column="0" Content="1" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="0" Grid.Column="1" Content="2" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="0" Grid.Column="2" Content="3" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="1" Grid.Column="0" Content="4" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="1" Grid.Column="1" Content="5" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="1" Grid.Column="2" Content="6" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="2" Grid.Column="0" Content="7" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="2" Grid.Column="1" Content="8" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="2" Grid.Column="2" Content="9" FontSize="30"/>
-        <Button Click="ButtonClickDigit" Grid.Row="3" Grid.Column="1" Content="0" FontSize="30"/>
-        <Button Click="ButtonClickOperation" Grid.Row="0" Grid.Column="4" Content="+" FontSize="30"/>
-        <Button Click="ButtonClickOperation" Grid.Row="1" Grid.Column="4" Content="-" FontSize="30"/>
-        <Button Click="ButtonClickOperation" Grid.Row="2" Grid.Column="4" Content="*" FontSize="30"/>
-        <Button Click="ButtonClickOperation" Grid.Row="3" Grid.Column="4" Content="/" FontSize="30"/>
+        <Button Click="ButtonClickChiffre"  Grid.Row="0" Grid.Column="0" Content="1" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="0" Grid.Column="1" Content="2" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="0" Grid.Column="2" Content="3" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="1" Grid.Column="0" Content="4" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="1" Grid.Column="1" Content="5" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="1" Grid.Column="2" Content="6" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="2" Grid.Column="0" Content="7" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="2" Grid.Column="1" Content="8" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="2" Grid.Column="2" Content="9" FontSize="30"/>
+        <Button Click="ButtonClickChiffre" Grid.Row="3" Grid.Column="1" Content="0" FontSize="30"/>
+        <Button x:Name="ButtonPlus" Click="ButtonClickOperateur" Grid.Row="0" Grid.Column="4" FontSize="30"/>
+        <Button x:Name="ButtonMoins" Click="ButtonClickOperateur" Grid.Row="1" Grid.Column="4" FontSize="30"/>
+        <Button x:Name="ButtonMultiplier" Click="ButtonClickOperateur" Grid.Row="2" Grid.Column="4" FontSize="30"/>
+        <Button x:Name="ButtonDiviser" Click="ButtonClickOperateur" Grid.Row="3" Grid.Column="4" FontSize="30"/>
         <Button Click="ButtonClickEgal" Grid.Row="3" Grid.Column="2" Content="=" FontSize="30"/>
         <Button Grid.Row="3" Grid.Column="0" Content="," FontSize="30"/>
-        <TextBox Grid.Row="4" x:Name="TextBoxResultat" Text="Resultat" FontSize="30" Grid.ColumnSpan="4"/>
+        <TextBox Grid.Row="4" x:Name="TextBoxResultat" Text="" FontSize="30" TextAlignment="Right" Grid.ColumnSpan="4"/>
     </Grid>
 </Window>

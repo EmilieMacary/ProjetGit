@@ -1,6 +1,4 @@
-﻿using System;
-
-public enum ColorEnum 
+﻿public enum ColorEnum
 {
     blue = 10,
     red = 33,

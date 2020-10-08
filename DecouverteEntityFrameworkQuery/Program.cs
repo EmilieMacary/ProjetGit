@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DecouverteEntityFrameworkQuery
 {
@@ -114,9 +113,9 @@ namespace DecouverteEntityFrameworkQuery
             return Query.ItemByIdQuery(ReadId);
         }
 
-        
 
-        
+
+
 
         public static Item AskItemToAddInStore()
         {
@@ -130,7 +129,7 @@ namespace DecouverteEntityFrameworkQuery
             return item;
         }
 
-        
+
 
         public static Item AskItemToUpdateInStore()
         {

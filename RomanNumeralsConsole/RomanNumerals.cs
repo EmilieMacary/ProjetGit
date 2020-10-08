@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace RomanNumeralsConsole
 {
@@ -13,19 +11,19 @@ namespace RomanNumeralsConsole
             {"X", 10}
         };
 
-        public static int Translate (string romanNumber)
+        public static int Translate(string romanNumber)
         {
             if (romanNumber.Length == 1)
             {
                 //RomanDigitDictionary.TryGetValue(romanNumber, out int numberResult);
-                
-                return RomanDigitDictionary[romanNumber]; 
+
+                return RomanDigitDictionary[romanNumber];
             }
             else
             {
                 int result = 0;
                 int iDigit = 0;
-                while(iDigit < romanNumber.Length - 1 && romanNumber[iDigit] == romanNumber[iDigit + 1])
+                while (iDigit < romanNumber.Length - 1 && romanNumber[iDigit] == romanNumber[iDigit + 1])
                 {
                     result++;
                     iDigit++;
