@@ -23,6 +23,13 @@ namespace DecouverteWPF
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+
+        private void MonBouton_Click(object sender, RoutedEventArgs e)
+        {
+            MonLabel.Content = "toto";
         }
     }
 }
