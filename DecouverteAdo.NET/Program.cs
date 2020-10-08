@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq.Expressions;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace DecouverteAdo.NET
 {
@@ -87,6 +88,16 @@ namespace DecouverteAdo.NET
                     int updatesNumber = command.ExecuteNonQuery();
                     WriteLine($"{updatesNumber} client MAJ");
                 }
+
+
+                // procédure stockée
+                using (SqlCommand command = new SqlCommand("StoredProcExample", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.ExecuteNonQuery();
+                }
+
+
             }
             catch (SqlException e)
             {
