@@ -20,47 +20,45 @@ namespace Calculette
     /// </summary>
     public partial class MainWindow : Window
     {
+        public double Resultat { get; set; }
+        public string Saisie { get; set; }
+        public string Operation { get; set; }
+        public double PremierNombre { get; set; }
+        public double DeuxiemeNombre { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Saisie = String.Empty;
+            Resultat = 0;
+            PremierNombre = 0;
+            DeuxiemeNombre = 0;
+            Operation = String.Empty;
         }
 
-        private void Button_Click_On_1(object sender, RoutedEventArgs e)
+        private void ButtonClickDigit(object sender, RoutedEventArgs e)
         {
+            Saisie += (string)((Button)sender).Content;
 
+            if (Operation == String.Empty)
+                PremierNombre = Double.Parse(Saisie);
+            else
+                DeuxiemeNombre = Double.Parse(Saisie.Substring(Saisie.LastIndexOf(Operation) + 1));
+
+            TextBoxResultat.Text = Saisie;
         }
 
-        private void Button_Click_On_2(object sender, RoutedEventArgs e)
+        private void ButtonClickPlus(object sender, RoutedEventArgs e)
         {
+            string OperationPlus = (string)((Button)sender).Content;
+            Saisie += OperationPlus;
+            Operation = OperationPlus;
 
+            TextBoxResultat.Text = Saisie;
         }
 
-        private void Button_Click_On_3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_On_4(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_On_5(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_On_6(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_On_7(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_On_8(object sender, RoutedEventArgs e)
+        private void ButtonClickEgal(object sender, RoutedEventArgs e)
         {
 
         }
