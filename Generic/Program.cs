@@ -9,7 +9,7 @@ namespace Generic
         {
             int intNumber = 10;
             float floatNumber = 10.5f;
-            Coordinate coordinate = new Coordinate { Abscissa = 5, Ordinate = 3 };
+            Point coordinate = new Point { Abscissa = 5, Ordinate = 3 };
 
 
             var intString = StringValue.ToString(intNumber);

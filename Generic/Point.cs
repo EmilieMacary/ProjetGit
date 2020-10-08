@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Generic
 {
-    public class Coordinate
+    public class Point
     {
         public int Abscissa { get; set; }
         public int Ordinate { get; set; }
 
-        public static Coordinate operator +(Coordinate first, Coordinate second) => new Coordinate { Abscissa = first.Abscissa, Ordinate = second.Ordinate };
+        public static Point operator +(Point first, Point second) => new Point { Abscissa = first.Abscissa, Ordinate = second.Ordinate };
 
     }
 

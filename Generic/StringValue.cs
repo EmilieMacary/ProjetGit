@@ -16,7 +16,7 @@ namespace Generic
             return number1.ToString();
         }
 
-        public static string ToString(Coordinate c)
+        public static string ToString(Point c)
         {
             return c.ToString();
         }
