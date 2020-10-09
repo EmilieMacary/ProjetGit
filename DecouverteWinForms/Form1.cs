@@ -33,6 +33,9 @@ namespace DecouverteWinForms
 
         private void ClickChiffre(object sender, EventArgs e)
         {
+            ExampleClass exampleFinalise = new ExampleClass();
+            exampleFinalise.ShowDuration();
+
             Saisie += ((Button)sender).Text;
 
             if (Operateur == string.Empty)

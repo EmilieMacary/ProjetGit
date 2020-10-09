@@ -1,6 +1,0 @@
-﻿namespace Generic
-{
-    class Extension
-    {
-    }
-}
