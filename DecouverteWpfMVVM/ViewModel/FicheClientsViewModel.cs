@@ -73,8 +73,16 @@ namespace PremiereUtilisationDUnDatacontext
                 Age = 32,
                 Sexe = "M"
             };
+            Client client = new Client()
+            {
+                Nom = "Vuille",
+                Prenom = "Thomas",
+                Age = 32,
+                Sexe = "M"
+            };
 
             Fiches.Add(FicheSelectionnee);
+            Fiches.Add(client);
         }
 
         private ICommand remiseAZeroDeLaFicheSelectionnee = new RelayCommand<Client>((client) =>

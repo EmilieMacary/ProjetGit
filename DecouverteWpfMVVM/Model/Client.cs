@@ -19,22 +19,14 @@ namespace PremiereUtilisationDUnDatacontext
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Nom
-        {
-            get
-            {
-                return nom;
-            }
+        public string Nom {get => Nom;         
 
             set
             {
                 if (value != nom)
                 {
                     nom = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("Nom"));
-                    }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Nom"));
                 }
             }
         }
@@ -98,5 +90,7 @@ namespace PremiereUtilisationDUnDatacontext
                 }
             }
         }
+
+
     }
 }
