@@ -45,12 +45,23 @@ namespace Calculette
             ButtonMultiplier.Content = MULTIPLIER;
             ButtonDiviser.Content = DIVISER;
             ButtonPuissance.Content = PUISSANCE;
+            decimal decimalDuScope = 17;
+            decimal decimal1 = 10;
+            decimal decimal2 = 5;
+            DelegateOperation newEvent = 
+                (decimal1, decimal2) =>
+                { 
+                    return decimal1 * decimal2 + decimalDuScope; 
+                };
+
+            DelegateOperation newEvent2 = (decimal1, decimal2) => decimal1 * decimal2 + decimalDuScope;
+                
+
         }
 
         private void ButtonClickChiffre(object sender, RoutedEventArgs e)
         {
-            if (MonEvent != null)
-                MonEvent((string)((Button)sender).Content);
+            MonEvent?.Invoke((string)((Button)sender).Content);
 
             Saisie += (string)((Button)sender).Content;
 
