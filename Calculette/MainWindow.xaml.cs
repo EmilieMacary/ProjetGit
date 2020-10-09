@@ -54,6 +54,7 @@ namespace Calculette
 
         private void ButtonClickEgal(object sender, RoutedEventArgs e)
         {
+            // var toto = typeof(string).GetMembers();
             MethodBase operation = typeof(decimal).GetMethod(OperateursMethodes[Operateur]);
             Resultat = (decimal)operation.Invoke(null, new object[] { PremierNombre, DeuxiemeNombre });
             Saisie = Resultat.ToString();
