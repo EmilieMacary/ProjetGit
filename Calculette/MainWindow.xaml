@@ -10,9 +10,9 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition Height="86.808" />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="1*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -40,6 +40,7 @@
         <TextBox Grid.Row="4" x:Name="TextBoxResultat" Text="" FontSize="30" TextAlignment="Right" Grid.ColumnSpan="4"/>
         <Button Click="ButtonSubscribeClick" Grid.Row="0" Grid.Column="3" Content="Subscribe" FontSize="30"/>
         <Button Click="ButtonUnsubscribeClick" Grid.Row="1" Grid.Column="3" Content="Unsubscribe" FontSize="30"/>
+        <Button x:Name="ButtonPuissance" Click="ButtonClickOperateur" Grid.Row="3" Grid.Column="3" FontSize="30"/>
         <TextBox Grid.Row="2"  Grid.Column="3" x:Name="TextBoxEvent" Text="Event" FontSize="30" />
     </Grid>
 </Window>

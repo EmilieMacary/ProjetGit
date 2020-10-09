@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,6 +16,7 @@ namespace Calculette
         private const string MOINS = "-";
         private const string MULTIPLIER = "*";
         private const string DIVISER = "/";
+        private const string PUISSANCE = "^";
 
         public decimal Resultat { get; set; } = 0;
         public string Saisie { get; set; } = string.Empty;
@@ -32,9 +34,8 @@ namespace Calculette
 
         private readonly Dictionary<string, DelegateOperation> _convertStringOperation = new Dictionary<string, DelegateOperation>()
         {
-            { PLUS, decimal.Add }, { MOINS, decimal.Subtract }, { MULTIPLIER, decimal.Multiply }, { DIVISER, decimal.Divide }
+            { PLUS, decimal.Add }, { MOINS, decimal.Subtract }, { MULTIPLIER, decimal.Multiply }, { DIVISER, decimal.Divide }, { PUISSANCE, PowNumbers}
         };
-
 
         public MainWindow()
         {
@@ -43,6 +44,7 @@ namespace Calculette
             ButtonMoins.Content = MOINS;
             ButtonMultiplier.Content = MULTIPLIER;
             ButtonDiviser.Content = DIVISER;
+            ButtonPuissance.Content = PUISSANCE;
         }
 
         private void ButtonClickChiffre(object sender, RoutedEventArgs e)
@@ -92,6 +94,11 @@ namespace Calculette
         private void MyMethod2(string str)
         {
             TextBoxResultat.Text = str;
+        }
+
+        public static decimal PowNumbers(decimal number1, decimal number2)
+        {
+            return (decimal)Math.Pow((double)number1, (double)number2);
         }
 
         private void ButtonSubscribeClick(object sender, RoutedEventArgs e)
