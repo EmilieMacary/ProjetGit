@@ -36,6 +36,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculette", "Calculette\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecouverteWinForms", "DecouverteWinForms\DecouverteWinForms.csproj", "{0D9737D2-AD91-40B9-A082-F2FC38DD2CD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecouverteWpfMVVM", "DecouverteWpfMVVM\DecouverteWpfMVVM.csproj", "{FABD4272-4208-4022-96B0-4C6B03419490}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{0D9737D2-AD91-40B9-A082-F2FC38DD2CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D9737D2-AD91-40B9-A082-F2FC38DD2CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D9737D2-AD91-40B9-A082-F2FC38DD2CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FABD4272-4208-4022-96B0-4C6B03419490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABD4272-4208-4022-96B0-4C6B03419490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FABD4272-4208-4022-96B0-4C6B03419490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FABD4272-4208-4022-96B0-4C6B03419490}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
