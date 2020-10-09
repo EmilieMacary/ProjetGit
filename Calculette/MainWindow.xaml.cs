@@ -25,8 +25,15 @@ namespace Calculette
         public Dictionary<string, string> OperateursMethodes = new Dictionary<string, string>() { { PLUS, "Add" }, { MOINS, "Subtract" }, { MULTIPLIER, "Multiply" }, { DIVISER, "Divide" } };
 
         delegate void MonDelegate(string str);
-
         event MonDelegate MonEvent;
+
+        delegate decimal DelegateOperation(decimal nb1, decimal nb2);
+        event DelegateOperation eventOperation;
+
+        private readonly Dictionary<string, DelegateOperation> _convertStringOperation = new Dictionary<string, DelegateOperation>()
+        {
+            { PLUS, decimal.Add }, { MOINS, decimal.Subtract }, { MULTIPLIER, decimal.Multiply }, { DIVISER, decimal.Divide }
+        };
 
 
         public MainWindow()
@@ -58,13 +65,18 @@ namespace Calculette
             Operateur = (string)((Button)sender).Content;
             Saisie += Operateur;
             TextBoxResultat.Text = Saisie;
+
+            eventOperation = _convertStringOperation[Operateur];
+
         }
 
         private void ButtonClickEgal(object sender, RoutedEventArgs e)
         {
             // var toto = typeof(string).GetMembers();
-            MethodBase operation = typeof(decimal).GetMethod(OperateursMethodes[Operateur]);
-            Resultat = (decimal)operation.Invoke(null, new object[] { PremierNombre, DeuxiemeNombre });
+            //MethodBase operation = typeof(decimal).GetMethod(OperateursMethodes[Operateur]);
+            //Resultat = (decimal)operation.Invoke(null, new object[] { PremierNombre, DeuxiemeNombre });
+
+            Resultat = eventOperation(PremierNombre, DeuxiemeNombre);
             Saisie = Resultat.ToString();
             TextBoxResultat.Text = Saisie;
             Operateur = string.Empty;
@@ -79,7 +91,7 @@ namespace Calculette
 
         private void MyMethod2(string str)
         {
-            TextBoxEvent.Text = str;
+            TextBoxResultat.Text = str;
         }
 
         private void ButtonSubscribeClick(object sender, RoutedEventArgs e)
