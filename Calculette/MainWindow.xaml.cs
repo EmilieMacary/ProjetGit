@@ -26,11 +26,13 @@ namespace Calculette
 
         public Dictionary<string, string> OperateursMethodes = new Dictionary<string, string>() { { PLUS, "Add" }, { MOINS, "Subtract" }, { MULTIPLIER, "Multiply" }, { DIVISER, "Divide" } };
 
-        delegate void MonDelegate(string str);
-        event MonDelegate MonEvent;
+        private delegate void MonDelegate(string str);
 
-        delegate decimal DelegateOperation(decimal nb1, decimal nb2);
-        event DelegateOperation eventOperation;
+        private event MonDelegate MonEvent;
+
+        private delegate decimal DelegateOperation(decimal nb1, decimal nb2);
+
+        private event DelegateOperation EventOperation;
 
         private readonly Dictionary<string, DelegateOperation> _convertStringOperation = new Dictionary<string, DelegateOperation>()
         {
@@ -45,8 +47,11 @@ namespace Calculette
             ButtonMultiplier.Content = MULTIPLIER;
             ButtonDiviser.Content = DIVISER;
             ButtonPuissance.Content = PUISSANCE;
+            
             decimal decimalDuScope = 17;
-            DelegateOperation exampleEvent = (n1, n2) => { return n1 * n2 + decimalDuScope; };
+            // exemple delegate
+            DelegateOperation exampleEvent = (n1, n2) => { return n1 * n2 + decimalDuScope; }; //n1 et n2 seront renseignés à l'appel de exampleEvent
+            // equivalent à
             DelegateOperation exampleEvent2 = (n1, n2) => n1 * n2 + decimalDuScope;
 
         }
@@ -71,7 +76,7 @@ namespace Calculette
             Saisie += Operateur;
             TextBoxResultat.Text = Saisie;
 
-            eventOperation = _convertStringOperation[Operateur];
+            EventOperation = _convertStringOperation[Operateur];
 
         }
 
@@ -81,7 +86,7 @@ namespace Calculette
             //MethodBase operation = typeof(decimal).GetMethod(OperateursMethodes[Operateur]);
             //Resultat = (decimal)operation.Invoke(null, new object[] { PremierNombre, DeuxiemeNombre });
 
-            Resultat = eventOperation(PremierNombre, DeuxiemeNombre);
+            Resultat = EventOperation(PremierNombre, DeuxiemeNombre);
             Saisie = Resultat.ToString();
             TextBoxResultat.Text = Saisie;
             Operateur = string.Empty;
