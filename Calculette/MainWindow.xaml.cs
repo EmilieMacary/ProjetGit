@@ -24,6 +24,11 @@ namespace Calculette
 
         public Dictionary<string, string> OperateursMethodes = new Dictionary<string, string>() { { PLUS, "Add" }, { MOINS, "Subtract" }, { MULTIPLIER, "Multiply" }, { DIVISER, "Divide" } };
 
+        delegate void MonDelegate(string str);
+
+        event MonDelegate MonEvent;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +40,9 @@ namespace Calculette
 
         private void ButtonClickChiffre(object sender, RoutedEventArgs e)
         {
+            if (MonEvent != null)
+                MonEvent((string)((Button)sender).Content);
+
             Saisie += (string)((Button)sender).Content;
 
             if (Operateur == string.Empty)
@@ -62,6 +70,27 @@ namespace Calculette
             Operateur = string.Empty;
             PremierNombre = Resultat;
             DeuxiemeNombre = 0;
+        }
+
+        private void MyMethod(string str)
+        {
+            TextBoxResultat.Text = str;
+        }
+
+        private void MyMethod2(string str)
+        {
+            TextBoxEvent.Text = str;
+        }
+
+        private void ButtonSubscribeClick(object sender, RoutedEventArgs e)
+        {
+            MonEvent += MyMethod;
+            MonEvent += MyMethod2;
+        }
+
+        private void ButtonUnsubscribeClick(object sender, RoutedEventArgs e)
+        {
+            MonEvent = null;
         }
     }
 }
