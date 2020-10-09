@@ -46,16 +46,8 @@ namespace Calculette
             ButtonDiviser.Content = DIVISER;
             ButtonPuissance.Content = PUISSANCE;
             decimal decimalDuScope = 17;
-            decimal decimal1 = 10;
-            decimal decimal2 = 5;
-            DelegateOperation newEvent = 
-                (decimal1, decimal2) =>
-                { 
-                    return decimal1 * decimal2 + decimalDuScope; 
-                };
-
-            DelegateOperation newEvent2 = (decimal1, decimal2) => decimal1 * decimal2 + decimalDuScope;
-                
+            DelegateOperation exampleEvent = (n1, n2) => { return n1 * n2 + decimalDuScope; };
+            DelegateOperation exampleEvent2 = (n1, n2) => n1 * n2 + decimalDuScope;
 
         }
 
