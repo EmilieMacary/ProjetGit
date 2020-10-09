@@ -39,6 +39,11 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button0 = new System.Windows.Forms.Button();
             this.TextBoxResultat = new System.Windows.Forms.TextBox();
+            this.buttonPlus = new System.Windows.Forms.Button();
+            this.buttonMoins = new System.Windows.Forms.Button();
+            this.buttonMultiplier = new System.Windows.Forms.Button();
+            this.buttonDiviser = new System.Windows.Forms.Button();
+            this.buttonEgal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -148,11 +153,66 @@
             this.TextBoxResultat.Size = new System.Drawing.Size(237, 20);
             this.TextBoxResultat.TabIndex = 2;
             // 
+            // buttonPlus
+            // 
+            this.buttonPlus.Location = new System.Drawing.Point(499, 96);
+            this.buttonPlus.Name = "buttonPlus";
+            this.buttonPlus.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlus.TabIndex = 10;
+            this.buttonPlus.Text = "+";
+            this.buttonPlus.UseVisualStyleBackColor = true;
+            this.buttonPlus.Click += new System.EventHandler(this.buttonClickOperation);
+            // 
+            // buttonMoins
+            // 
+            this.buttonMoins.Location = new System.Drawing.Point(499, 125);
+            this.buttonMoins.Name = "buttonMoins";
+            this.buttonMoins.Size = new System.Drawing.Size(75, 23);
+            this.buttonMoins.TabIndex = 11;
+            this.buttonMoins.Text = "-";
+            this.buttonMoins.UseVisualStyleBackColor = true;
+            this.buttonMoins.Click += new System.EventHandler(this.buttonClickOperation);
+            // 
+            // buttonMultiplier
+            // 
+            this.buttonMultiplier.Location = new System.Drawing.Point(499, 155);
+            this.buttonMultiplier.Name = "buttonMultiplier";
+            this.buttonMultiplier.Size = new System.Drawing.Size(75, 23);
+            this.buttonMultiplier.TabIndex = 12;
+            this.buttonMultiplier.Text = "*";
+            this.buttonMultiplier.UseVisualStyleBackColor = true;
+            this.buttonMultiplier.Click += new System.EventHandler(this.buttonClickOperation);
+            // 
+            // buttonDiviser
+            // 
+            this.buttonDiviser.Location = new System.Drawing.Point(499, 184);
+            this.buttonDiviser.Name = "buttonDiviser";
+            this.buttonDiviser.Size = new System.Drawing.Size(75, 23);
+            this.buttonDiviser.TabIndex = 13;
+            this.buttonDiviser.Text = "/";
+            this.buttonDiviser.UseVisualStyleBackColor = true;
+            this.buttonDiviser.Click += new System.EventHandler(this.buttonClickOperation);
+            // 
+            // buttonEgal
+            // 
+            this.buttonEgal.Location = new System.Drawing.Point(499, 229);
+            this.buttonEgal.Name = "buttonEgal";
+            this.buttonEgal.Size = new System.Drawing.Size(75, 23);
+            this.buttonEgal.TabIndex = 14;
+            this.buttonEgal.Text = "=";
+            this.buttonEgal.UseVisualStyleBackColor = true;
+            this.buttonEgal.Click += new System.EventHandler(this.buttonEgal_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonEgal);
+            this.Controls.Add(this.buttonDiviser);
+            this.Controls.Add(this.buttonMultiplier);
+            this.Controls.Add(this.buttonMoins);
+            this.Controls.Add(this.buttonPlus);
             this.Controls.Add(this.TextBoxResultat);
             this.Controls.Add(this.button0);
             this.Controls.Add(this.button9);
@@ -184,7 +244,11 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button0;
         private System.Windows.Forms.TextBox TextBoxResultat;
-
+        private System.Windows.Forms.Button buttonPlus;
+        private System.Windows.Forms.Button buttonMoins;
+        private System.Windows.Forms.Button buttonMultiplier;
+        private System.Windows.Forms.Button buttonDiviser;
+        private System.Windows.Forms.Button buttonEgal;
     }
 }
 

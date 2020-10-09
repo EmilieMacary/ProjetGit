@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,5 +43,22 @@ namespace DecouverteWinForms
             TextBoxResultat.Text = Saisie;
         }
 
+        private void buttonClickOperation(object sender, EventArgs e)
+        {
+            Operateur = ((Button)sender).Text;
+            Saisie += Operateur;
+            TextBoxResultat.Text = Saisie;
+        }
+
+        private void buttonEgal_Click(object sender, EventArgs e)
+        {
+            MethodBase operation = typeof(decimal).GetMethod(OperateursMethodes[Operateur]);
+            Resultat = (decimal)operation.Invoke(null, new object[] { PremierNombre, DeuxiemeNombre });
+            Saisie = Resultat.ToString();
+            TextBoxResultat.Text = Saisie;
+            Operateur = string.Empty;
+            PremierNombre = Resultat;
+            DeuxiemeNombre = 0;
+        }
     }
 }
